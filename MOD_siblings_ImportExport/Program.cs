@@ -23,6 +23,26 @@ namespace MOD_siblings_ImportExport
                 MessageBox.Show("Hello FISCA!");
             };
 
+            FISCA.Presentation.RibbonBarItem item_e = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "康橋"];
+            item_e["匯出兄弟姊妹資訊"].Enable = FISCA.Permission.UserAcl.Current["20DD29B1-20E8-42C4-ACB6-3958FEF8A8C1"].Executable;
+            item_e["匯出兄弟姊妹資訊"].Click += delegate
+            {
+                // 最少選一位學生
+                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0)
+                {
+                    // 使用匯出 API
+                    SmartSchool.API.PlugIn.Export.Exporter exporter = new MOD_siblings_ImportExport.ImportExport.ExportSiblingRecord();
+
+                    // 使用匯出精靈
+                    ImportExport.ExportStudentV2 wizard = new ImportExport.ExportStudentV2(exporter.Text, exporter.Image);
+                    exporter.InitializeExport(wizard);
+                    wizard.ShowDialog();
+                }               
+            };
+
+            Catalog catalog_e = RoleAclSource.Instance["學生"]["功能按鈕"];
+            catalog_e.Add(new RibbonFeature("20DD29B1-20E8-42C4-ACB6-3958FEF8A8C1", "匯出兄弟姊妹資訊"));
+
         }
     }
 
