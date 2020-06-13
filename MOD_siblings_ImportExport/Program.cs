@@ -7,6 +7,7 @@ using FISCA.Permission;
 using FISCA.Presentation.Controls;
 using K12.Data;
 using System.Windows.Forms;
+using Campus.DocumentValidator;
 
 namespace MOD_siblings_ImportExport
 {
@@ -40,9 +41,25 @@ namespace MOD_siblings_ImportExport
                 }               
             };
 
+            FISCA.Presentation.RibbonBarItem item_i = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "康橋"];
+            item_i["匯入兄弟姊妹資訊"].Enable = FISCA.Permission.UserAcl.Current["800D8794-BB03-4497-A53B-E8BED38DFB2B"].Executable;
+            item_i["匯入兄弟姊妹資訊"].Click += delegate
+            {
+                // 載入所有學生與狀態，資料匯入比對使用
+                Global._AllStudentNumberStatusIDTemp = Global.GetAllStudenNumberStatusDict();
+                ImportExport.ImportSiblingRecord importSiblingRecord = new ImportExport.ImportSiblingRecord();
+                importSiblingRecord.Execute();
+            };
+
+            // 載入自訂驗證規則
+            #region 自訂驗證規則
+            FactoryProvider.RowFactory.Add(new ValidationRule.SiblingRowValidatorFactory());
+            #endregion
+
+
             Catalog catalog_e = RoleAclSource.Instance["學生"]["功能按鈕"];
             catalog_e.Add(new RibbonFeature("20DD29B1-20E8-42C4-ACB6-3958FEF8A8C1", "匯出兄弟姊妹資訊"));
-
+            catalog_e.Add(new RibbonFeature("800D8794-BB03-4497-A53B-E8BED38DFB2B", "匯入兄弟姊妹資訊"));
         }
     }
 

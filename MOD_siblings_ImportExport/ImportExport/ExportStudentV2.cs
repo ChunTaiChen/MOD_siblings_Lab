@@ -144,7 +144,7 @@ namespace MOD_siblings_ImportExport.ImportExport
                 }
                 listViewEx1.Items.Clear();
 
-                List<string> newFields = new List<string>(new string[] { "學生系統編號", "學號", "班級", "座號", "姓名" });
+                List<string> newFields = new List<string>(new string[] { "學生系統編號", "學號", "班級", "座號", "姓名","狀態" });
                 //newFields.AddRange(_Process.ExportableFields);
                 foreach (string field in _ExportableFields)
                 {
@@ -406,7 +406,7 @@ namespace MOD_siblings_ImportExport.ImportExport
                 List<string> studentFieldList = new List<string>();
                 List<string> exportFieldList = new List<string>(_SelectedFields);
                 #region 取得選取欄位
-                for (int index = 0; index < 5; index++)
+                for (int index = 0; index < 6; index++)
                 {
                     if (listViewEx1.Items[index] != null && listViewEx1.Items[index].Checked)
                     {
@@ -518,6 +518,7 @@ namespace MOD_siblings_ImportExport.ImportExport
                                         case "班級": report.Worksheets[0].Cells[RowIndex, i].PutValue(student.Class == null ? "" : student.Class.Name); break;
                                         case "座號": report.Worksheets[0].Cells[RowIndex, i].PutValue(student.SeatNo); break;
                                         case "姓名": report.Worksheets[0].Cells[RowIndex, i].PutValue(student.Name); break;
+                                        case "狀態": report.Worksheets[0].Cells[RowIndex, i].PutValue(student.StatusStr); break;
                                         default:
                                             break;
                                     }

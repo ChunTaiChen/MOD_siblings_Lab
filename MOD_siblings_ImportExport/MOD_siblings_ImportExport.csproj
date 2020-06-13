@@ -40,6 +40,11 @@
       <HintPath>Library\Aspose.Words_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Campus.DocumentValidator, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.DocumentValidator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Campus.Import, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Import.dll</HintPath>
@@ -122,23 +127,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.cs" />
     <Compile Include="ImportExport\ExportSiblingRecord.cs" />
     <Compile Include="ImportExport\ExportStudentV2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportExport\ExportStudentV2.designer.cs" />
+    <Compile Include="ImportExport\ImportSiblingRecord.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UDT\Studentsiblings.cs" />
+    <Compile Include="ValidationRule\RowValidator\StudCheckStudentNumberStatusVal.cs" />
+    <Compile Include="ValidationRule\SiblingRowValidatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ImportExport\ImportSiblingRecordDataVal.xml" />
     <Content Include="Library\Aspose.Cells.dll" />
     <Content Include="Library\Aspose.Cells.xml" />
     <Content Include="Library\Aspose.Words_201402.dll" />
     <Content Include="Library\Aspose.Words_201402.xml" />
+    <Content Include="Library\Campus.DocumentValidator.dll" />
+    <Content Include="Library\Campus.DocumentValidator.pdb" />
+    <Content Include="Library\Campus.DocumentValidator.xml" />
     <Content Include="Library\Campus.Import.dll" />
     <Content Include="Library\Campus.Import.pdb" />
     <Content Include="Library\Campus.Import.xml" />
@@ -176,6 +194,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImportExport\ExportStudentV2.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
