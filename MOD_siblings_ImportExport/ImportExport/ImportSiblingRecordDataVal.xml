@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="format.xsl" ?>
 <ValidateRule Name="兄弟姊妹資訊">
   <DuplicateDetection>
-    <Detector Name="PrimaryKey1">
+    <Detector Name="兄弟姊妹資訊唯一值">
       <Field Name="學號" />
       <Field Name="狀態" />
       <Field Name="兄弟姊妹姓名" />
