@@ -65,7 +65,7 @@ namespace MOD_siblings_ImportExport.Properties {
         ///&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;format.xsl&quot; ?&gt;
         ///&lt;ValidateRule Name=&quot;兄弟姊妹資訊&quot;&gt;
         ///  &lt;DuplicateDetection&gt;
-        ///    &lt;Detector Name=&quot;PrimaryKey1&quot;&gt;
+        ///    &lt;Detector Name=&quot;兄弟姊妹資訊唯一值&quot;&gt;
         ///      &lt;Field Name=&quot;學號&quot; /&gt;
         ///      &lt;Field Name=&quot;狀態&quot; /&gt;
         ///      &lt;Field Name=&quot;兄弟姊妹姓名&quot; /&gt;
@@ -76,11 +76,21 @@ namespace MOD_siblings_ImportExport.Properties {
         ///
         ///    &lt;Field Required=&quot;True&quot; Name=&quot;學號&quot;&gt;
         ///      &lt;Validate AutoCorrect=&quot;False&quot; Description=&quot;「學號」不允許空白。&quot; ErrorType=&quot;Error&quot; Validator=&quot;不可空白&quot; When=&quot;&quot; /&gt;
-        ///    &lt;/Fie [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
+        ///    &lt;/Field [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
         /// </summary>
         internal static string ImportSiblingRecordDataVal {
             get {
                 return ResourceManager.GetString("ImportSiblingRecordDataVal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 兄弟姊妹資訊樣板 {
+            get {
+                object obj = ResourceManager.GetObject("兄弟姊妹資訊樣板", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
