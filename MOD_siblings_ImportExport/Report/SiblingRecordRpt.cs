@@ -45,9 +45,7 @@ namespace MOD_siblings_ImportExport.Report
                     Document doc = new Document(new MemoryStream(Properties.Resources.兄弟姊妹資訊樣板));
 
                     // 使用 DatatTable 合併 Word 
-                    DataTable dtTable = new DataTable();
-
-                  
+                    DataTable dtTable = new DataTable();                  
 
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -89,9 +87,10 @@ namespace MOD_siblings_ImportExport.Report
                             idx++;
                         }
 
-                        // 加入 DatatTable,一頁一筆 row
+                        // 加入 DatatTable,一節(Word section)一筆 row
                         dtTable.Rows.Add(newRow);
 
+                        // 執行合併列印
                         doc.MailMerge.Execute(dtTable);
 
                         // 移除沒有合併到合併欄位
@@ -133,7 +132,6 @@ namespace MOD_siblings_ImportExport.Report
             m1.Add("學校名稱");
             m1.Add("班級名稱");
             m1.Add("備註");
-
 
             builder.StartTable();
 
